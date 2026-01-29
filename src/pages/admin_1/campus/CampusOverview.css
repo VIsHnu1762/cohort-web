@@ -1,0 +1,176 @@
+.campus-overview-container {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.campus-overview-header {
+    margin-bottom: 3rem;
+}
+
+.campus-overview-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.campus-overview-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.floors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.floor-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.floor-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.floor-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0 0;
+}
+
+.floor-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.floor-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.floor-wing-info {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+.floor-wing-assigned {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fw-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.fw-name {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.floor-wing-unassigned {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #FF9800;
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.submission-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.submission-details {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.85rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.detail-item.approved {
+    color: #4CAF50;
+}
+
+.detail-item.pending {
+    color: #FF9800;
+}
+
+.detail-item.rejected {
+    color: #F44336;
+}
+
+@media (max-width: 768px) {
+    .campus-overview-title {
+        font-size: 2rem;
+    }
+    
+    .floors-grid {
+        grid-template-columns: 1fr;
+    }
+}

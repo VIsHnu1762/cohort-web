@@ -1,0 +1,171 @@
+/* Campus Selection Page - Matching Mentor Dashboard Design */
+/* Uses ThemeContext CSS variables with fallbacks for SSR */
+
+.campus-selection-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.campus-selection-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 3rem;
+    z-index: 1;
+}
+
+.campus-selection-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.campus-selection-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    margin: 0;
+    color: var(--text-secondary, #616161);
+    font-weight: 400;
+}
+
+/* Theme-specific overrides */
+[data-theme='dark'] .campus-selection-subtitle {
+    color: var(--text-secondary, #BDBDBD);
+}
+
+.campus-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
+}
+
+.campus-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 3rem 2rem;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    min-height: 450px;
+}
+
+.campus-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    padding: 0.5rem;
+}
+
+.campus-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.campus-card:hover .campus-icon {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.campus-name {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary, #000000);
+}
+
+[data-theme='dark'] .campus-name {
+    color: var(--text-primary, #FFFFFF);
+}
+
+.campus-description {
+    font-size: 1rem;
+    color: var(--text-secondary, #616161);
+    margin: 0;
+    line-height: 1.5;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+[data-theme='dark'] .campus-description {
+    color: var(--text-secondary, #BDBDBD);
+}
+
+.campus-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffcc00, #FFA726);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary, #616161);
+    font-weight: 500;
+}
+
+[data-theme='dark'] .stat-label {
+    color: var(--text-secondary, #BDBDBD);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .campus-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .campus-selection-title {
+        font-size: 2.5rem;
+    }
+    
+    .campus-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .campus-icon {
+        width: 100px;
+        height: 100px;
+    }
+}

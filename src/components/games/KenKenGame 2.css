@@ -1,0 +1,512 @@
+/* KenKen Game Styles */
+
+.kenken-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.kenken-modal {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .kenken-modal {
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-primary: #000000;
+    --text-secondary: #616161;
+}
+
+[data-theme='dark'] .kenken-modal {
+    --glass-bg: rgba(18, 18, 18, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #FFFFFF;
+    --text-secondary: #BDBDBD;
+}
+
+/* Header */
+.kenken-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.kenken-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.kenken-title h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.kenken-title svg {
+    color: #ffcc00;
+}
+
+.kenken-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+    border-radius: 8px;
+}
+
+.kenken-close:hover {
+    color: var(--text-primary);
+    background: rgba(247, 201, 72, 0.1);
+}
+
+/* Stats */
+.kenken-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.kenken-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(247, 201, 72, 0.1);
+    border-radius: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 140px;
+}
+
+.kenken-stat svg {
+    color: #ffcc00;
+}
+
+.kenken-stat--streak {
+    background: linear-gradient(135deg, rgba(247, 201, 72, 0.2), rgba(229, 57, 53, 0.2));
+}
+
+.kenken-stat--streak svg {
+    color: #ffcc00;
+}
+
+.kenken-hint-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+[data-theme='dark'] .kenken-hint-btn {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.kenken-hint-btn:hover {
+    background: rgba(247, 201, 72, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Rules */
+.kenken-rules {
+    background: rgba(247, 201, 72, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.kenken-rules h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+}
+
+.kenken-rules ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.kenken-rules li {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Grid */
+.kenken-grid-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.kenken-grid {
+    display: grid;
+    gap: 0;
+    background: #ffffff;
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    border: 3px solid #000000;
+}
+
+.kenken-cell {
+    position: relative;
+    aspect-ratio: 1;
+    border-style: solid;
+    border-color: #000000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 90px;
+    max-height: 90px;
+    box-sizing: border-box;
+}
+
+.kenken-cell:hover {
+    filter: brightness(0.95);
+}
+
+.kenken-cell--selected {
+    box-shadow: inset 0 0 0 3px #2196F3 !important;
+    z-index: 10;
+}
+
+.kenken-cage-label {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    pointer-events: none;
+    z-index: 1;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    letter-spacing: -0.5px;
+    color: #000000;
+}
+
+.kenken-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #000000;
+}
+
+.kenken-cell--selected .kenken-input {
+    font-size: 2.1rem;
+}
+
+.kenken-input::-webkit-inner-spin-button,
+.kenken-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.kenken-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Number Pad */
+.kenken-numpad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.kenken-num-btn {
+    padding: 1rem;
+    background: rgba(247, 201, 72, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.kenken-num-btn:hover {
+    background: rgba(247, 201, 72, 0.3);
+    transform: translateY(-2px);
+}
+
+.kenken-num-btn:active {
+    transform: translateY(0);
+}
+
+.kenken-num-btn--clear {
+    grid-column: span 2;
+    background: rgba(229, 57, 53, 0.1);
+    color: #ffcc00;
+}
+
+.kenken-num-btn--clear:hover {
+    background: rgba(229, 57, 53, 0.2);
+}
+
+.kenken-num-btn--hint {
+    grid-column: span 3;
+    background: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+}
+
+.kenken-num-btn--hint:hover {
+    background: rgba(33, 150, 243, 0.2);
+}
+
+.kenken-num-btn--hint:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.kenken-num-btn--hint:disabled:hover {
+    background: rgba(33, 150, 243, 0.1);
+    transform: none;
+}
+
+/* Hint Display */
+.kenken-hint-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.05));
+    border: 2px solid rgba(33, 150, 243, 0.3);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #1976D2;
+    position: relative;
+}
+
+.kenken-hint-display svg {
+    flex-shrink: 0;
+    color: #2196F3;
+}
+
+.kenken-hint-display span {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.kenken-hint-close {
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: #1976D2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.kenken-hint-close:hover {
+    background: rgba(33, 150, 243, 0.2);
+}
+
+/* Errors */
+.kenken-errors {
+    margin-bottom: 1rem;
+}
+
+.kenken-error {
+    padding: 0.75rem 1rem;
+    background: rgba(229, 57, 53, 0.1);
+    border-left: 4px solid #ffcc00;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #ffcc00;
+}
+
+/* Success */
+.kenken-success {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(247, 201, 72, 0.2), rgba(229, 57, 53, 0.2));
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.kenken-success svg {
+    color: #ffcc00;
+    margin-bottom: 1rem;
+}
+
+.kenken-success h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.kenken-success p {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-secondary);
+    margin: 0.25rem 0;
+}
+
+/* Actions */
+.kenken-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.kenken-btn {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.kenken-btn--primary {
+    background: linear-gradient(135deg, #ffcc00, #ffcc00);
+    color: #000000;
+}
+
+.kenken-btn--primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(247, 201, 72, 0.4);
+}
+
+.kenken-btn--primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.kenken-btn--secondary {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+}
+
+[data-theme='dark'] .kenken-btn--secondary {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.kenken-btn--secondary:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+[data-theme='dark'] .kenken-btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kenken-modal {
+        padding: 1.5rem;
+        max-height: 95vh;
+    }
+
+    .kenken-title h2 {
+        font-size: 1.25rem;
+    }
+
+    .kenken-grid {
+        max-width: 100%;
+    }
+
+    .kenken-cell {
+        min-width: 50px;
+        min-height: 50px;
+    }
+
+    .kenken-input {
+        font-size: 1.25rem;
+    }
+
+    .kenken-numpad {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .kenken-num-btn--clear {
+        grid-column: span 3;
+    }
+
+    .kenken-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .kenken-stats {
+        flex-direction: column;
+    }
+
+    .kenken-stat {
+        min-width: 100%;
+    }
+}

@@ -1,0 +1,592 @@
+/* SCD (Skill and Career Development) Styles */
+
+.scd-container {
+  min-height: 100vh;
+  padding: 2rem;
+  color: var(--text);
+}
+
+/* Header */
+.scd-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.scd-title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffcc00, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.scd-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* Layout */
+.scd-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.scd-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.scd-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Alert Messages */
+.scd-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scd-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+.scd-alert-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+}
+
+/* Section Title */
+.scd-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Sync Card */
+.scd-sync-card {
+  padding: 2rem;
+}
+
+.scd-sync-form {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+
+.scd-sync-form .input-container {
+  flex: 1;
+}
+
+.scd-sync-form .input-wrapper {
+  margin-bottom: 0;
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+}
+
+.scd-sync-form button {
+  flex-shrink: 0;
+  padding: 1rem 2rem;
+  min-height: 56px;
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scd-last-sync {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.scd-last-sync svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.scd-spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Fire Card - Main Container */
+/* Stats Card with Circular Progress */
+.scd-stats-card {
+  padding: 2.5rem;
+}
+
+.scd-stats-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.scd-trophy-icon {
+  color: var(--accent);
+  filter: drop-shadow(0 0 10px rgba(247, 201, 72, 0.5));
+}
+
+.scd-circular-container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Circular Progress Ring */
+.scd-circular-progress {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scd-progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 15px rgba(247, 201, 72, 0.4));
+}
+
+.scd-progress-ring-bg {
+  transition: stroke 0.3s ease;
+}
+
+.scd-progress-ring-progress {
+  transition: stroke-dashoffset 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(247, 201, 72, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(247, 201, 72, 0.7));
+  }
+}
+
+/* Progress Center Content */
+.scd-progress-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scd-total-problems {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffcc00 0%, #FFD966 50%, #FFA726 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 30px rgba(247, 201, 72, 0.3));
+  letter-spacing: -2px;
+}
+
+.scd-problems-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scd-problems-progress {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  background: rgba(247, 201, 72, 0.12);
+  border: 1px solid rgba(247, 201, 72, 0.3);
+  border-radius: 24px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(247, 201, 72, 0.15);
+}
+
+/* Difficulty Stats Grid */
+.scd-difficulty-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.scd-difficulty-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.scd-difficulty-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.scd-difficulty-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.scd-difficulty-card:hover .scd-difficulty-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.scd-icon-easy {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(129, 199, 132, 0.25));
+  color: #4caf50;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+}
+
+.scd-icon-medium {
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.25), rgba(255, 183, 77, 0.25));
+  color: #ff9800;
+  box-shadow: 0 4px 20px rgba(255, 152, 0, 0.2);
+}
+
+.scd-icon-hard {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.25), rgba(239, 83, 80, 0.25));
+  color: #f44336;
+  box-shadow: 0 4px 20px rgba(244, 67, 54, 0.2);
+}
+
+.scd-icon-ranking {
+  background: linear-gradient(135deg, rgba(63, 81, 181, 0.25), rgba(100, 181, 246, 0.25));
+  color: #3f51b5;
+  box-shadow: 0 4px 20px rgba(63, 81, 181, 0.2);
+}
+
+.scd-difficulty-content {
+  flex: 1;
+}
+
+.scd-difficulty-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.scd-difficulty-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Submission Card */
+.scd-submission-card {
+  padding: 2rem;
+}
+
+.scd-submission-status {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Status Badges */
+.scd-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  backdrop-filter: blur(10px);
+}
+
+.scd-status-pending {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.scd-status-approved {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(34, 197, 94, 0.2));
+  border: 2px solid rgba(74, 222, 128, 0.5);
+  color: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.scd-status-rejected {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(239, 68, 68, 0.2));
+  border: 2px solid rgba(248, 113, 113, 0.5);
+  color: #f87171;
+  box-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
+}
+
+.scd-review-comments {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+.scd-review-comments h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.scd-review-comments p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Recent Submissions Card */
+.scd-recent-card {
+  padding: 1.5rem;
+}
+
+.scd-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.scd-submissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.scd-submission-item {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.scd-submission-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+}
+
+.scd-submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.scd-submission-problem {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.scd-submission-difficulty {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.scd-submission-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.scd-submission-status {
+  color: #4ade80;
+}
+
+.scd-submission-date {
+  opacity: 0.7;
+}
+
+/* Achievement Badge */
+.scd-achievement-badge {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.1));
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scd-achievement-badge:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.scd-achievement-badge svg {
+  color: #8b5cf6;
+  margin-bottom: 1rem;
+}
+
+.scd-achievement-badge h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.scd-achievement-badge p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .scd-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .scd-circular-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .scd-circular-progress {
+    margin: 0 auto;
+  }
+
+  .scd-difficulty-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .scd-container {
+    padding: 1rem;
+  }
+
+  .scd-title {
+    font-size: 2rem;
+  }
+
+  .scd-subtitle {
+    font-size: 1rem;
+  }
+
+  .scd-sync-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .scd-circular-progress {
+    width: 280px;
+    height: 280px;
+  }
+
+  .scd-progress-ring {
+    width: 280px;
+    height: 280px;
+  }
+
+  .scd-progress-center {
+    width: 200px;
+  }
+
+  .scd-total-problems {
+    font-size: 4rem;
+  }
+
+  .scd-problems-label {
+    font-size: 0.9rem;
+  }
+
+  .scd-problems-progress {
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .scd-difficulty-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .scd-difficulty-value {
+    font-size: 1.8rem;
+  }
+}
+

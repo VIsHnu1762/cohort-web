@@ -1,0 +1,370 @@
+.floorwing-gamification-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.floorwing-gamification-panel.loading,
+.floorwing-gamification-panel.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Header Stats */
+.gamification-header {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.header-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-stat svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Leaderboard Section */
+.leaderboard-section {
+  margin-top: 1.5rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.section-title svg {
+  color: var(--primary);
+}
+
+/* Leaderboard List */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.leaderboard-header {
+  display: grid;
+  grid-template-columns: 120px 1fr 150px 180px;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 150px 180px;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Rank Highlights */
+.leaderboard-item.rank-gold {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.leaderboard-item.rank-silver {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0.05));
+  border-color: rgba(192, 192, 192, 0.3);
+}
+
+.leaderboard-item.rank-bronze {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(205, 127, 50, 0.05));
+  border-color: rgba(205, 127, 50, 0.3);
+}
+
+/* Rank Cell */
+.rank-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rank-icon {
+  flex-shrink: 0;
+}
+
+.rank-icon.gold {
+  color: #FFD700;
+}
+
+.rank-icon.silver {
+  color: #C0C0C0;
+}
+
+.rank-icon.bronze {
+  color: #CD7F32;
+}
+
+.rank-icon.default {
+  color: var(--text-secondary);
+}
+
+.rank-number {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Student Cell */
+.student-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.student-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-username {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Score Cell */
+.score-cell {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-max {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Title Cell */
+.title-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rank-title {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Percentile Section */
+.percentile-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.subsection-title svg {
+  color: var(--secondary);
+}
+
+.percentile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.percentile-item {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.percentile-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.percentile-icon {
+  color: var(--secondary);
+}
+
+.percentile-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  gap: 1rem;
+}
+
+.empty-state svg {
+  opacity: 0.3;
+}
+
+.empty-state p {
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .leaderboard-header,
+  .leaderboard-item {
+    grid-template-columns: 100px 1fr 120px 150px;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gamification-header {
+    grid-template-columns: 1fr;
+  }
+
+  .leaderboard-header {
+    display: none;
+  }
+
+  .leaderboard-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .rank-cell,
+  .student-cell,
+  .score-cell,
+  .title-cell,
+  .percentile-cell,
+  .status-cell {
+    justify-content: space-between;
+  }
+
+  .title-cell,
+  .status-cell {
+    justify-content: flex-start;
+  }
+}

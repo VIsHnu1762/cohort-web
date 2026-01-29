@@ -1,0 +1,186 @@
+.input-wrapper {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: 2px solid #E0E0E0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme='light'] .input-field {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  border-color: #E0E0E0;
+}
+
+[data-theme='dark'] .input-field {
+  background: rgba(30, 30, 30, 0.8);
+  color: #FFFFFF;
+  border-color: #424242;
+}
+
+.input-field::placeholder {
+  color: #9E9E9E;
+}
+
+/* Hide date input placeholder */
+.input-field[type="date"] {
+  color: transparent;
+}
+
+.input-field[type="date"]:focus,
+.input-field[type="date"]:not([value=""]) {
+  color: inherit;
+}
+
+[data-theme='light'] .input-field[type="date"]:focus,
+[data-theme='light'] .input-field[type="date"]:not([value=""]) {
+  color: #000000;
+}
+
+[data-theme='dark'] .input-field[type="date"]:focus,
+[data-theme='dark'] .input-field[type="date"]:not([value=""]) {
+  color: #FFFFFF;
+}
+
+.input-field[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.input-field:hover {
+  border-color: rgba(247, 201, 72, 0.5);
+}
+
+.input-field:focus {
+  border-color: #ffcc00;
+  box-shadow: none;
+  background: transparent !important;
+}
+
+/* Floating Label */
+.input-field--floating {
+  padding-top: 1.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.input-label {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 0.25rem;
+  font-family: 'Inter', sans-serif;
+  z-index: 2;
+  white-space: nowrap;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-theme='light'] .input-label {
+  color: #616161;
+}
+
+[data-theme='dark'] .input-label {
+  color: #BDBDBD;
+}
+
+.input-label--active {
+  top: -0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.25rem;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Static Label */
+.input-label-static {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+[data-theme='light'] .input-label-static {
+  color: #000000;
+}
+
+[data-theme='dark'] .input-label-static {
+  color: #FFFFFF;
+}
+
+/* With Icon */
+.input-field--with-icon {
+  padding-left: 3.25rem !important;
+}
+
+.input-label--with-icon {
+  left: 3.25rem !important;
+}
+
+.input-label--with-icon.input-label--active {
+  left: 0.75rem !important;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+[data-theme='light'] .input-icon {
+  color: #424242;
+}
+
+[data-theme='dark'] .input-icon {
+  color: #E0E0E0;
+}
+
+.input-container--focused .input-icon {
+  color: #ffcc00;
+}
+
+/* Error State */
+.input-container--error .input-field {
+  border-color: #ffcc00;
+}
+
+.input-container--error .input-field:focus {
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+}
+
+.input-error {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #ffcc00;
+  font-family: 'Inter', sans-serif;
+}

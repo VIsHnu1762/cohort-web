@@ -1,0 +1,192 @@
+/* Leaderboard Page */
+[data-theme="light"] .leaderboard-page {
+    --page-text: #111827;
+    --page-text-secondary: #6B7280;
+    --page-border: rgba(0, 0, 0, 0.08);
+    --page-bg-hover: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .leaderboard-page {
+    --page-text: #F9FAFB;
+    --page-text-secondary: #9CA3AF;
+    --page-border: rgba(255, 255, 255, 0.1);
+    --page-bg-hover: rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    color: var(--page-text);
+    min-height: 100vh;
+    background: transparent;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.page-subtitle {
+    color: var(--page-text-secondary);
+    font-size: 1rem;
+}
+
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.leaderboard-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--page-border);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.leaderboard-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, #ffcc00, #ffcc00);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.leaderboard-item:hover {
+    background: var(--page-bg-hover);
+    border-color: transparent;
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(247, 201, 72, 0.25);
+}
+
+.leaderboard-item:hover::before {
+    opacity: 1;
+}
+
+.leaderboard-item.top-three {
+    background: linear-gradient(135deg, rgba(247, 201, 72, 0.1) 0%, rgba(229, 57, 53, 0.05) 100%);
+    border: 2px solid rgba(247, 201, 72, 0.4);
+}
+
+.leaderboard-item.top-three::before {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.rank-badge {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.medal-1 {
+    color: #FFD700;
+}
+
+.medal-2 {
+    color: #C0C0C0;
+}
+
+.medal-3 {
+    color: #CD7F32;
+}
+
+.rank-number {
+    color: var(--page-text-secondary);
+    font-size: 1.1rem;
+}
+
+.student-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.student-details {
+    flex: 1;
+}
+
+.student-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--page-text);
+    margin-bottom: 0.25rem;
+}
+
+.student-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--page-text-secondary);
+}
+
+.student-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.xp-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(103, 126, 234, 0.1);
+    border-radius: 8px;
+    color: #667eea;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .leaderboard-page {
+        padding: 1rem;
+    }
+
+    .leaderboard-item {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .xp-display {
+        width: 100%;
+        justify-content: center;
+    }
+}

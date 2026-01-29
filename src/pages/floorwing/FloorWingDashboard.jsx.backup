@@ -1,0 +1,277 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Users, CheckCircle, Clock, UserCheck, TrendingUp, Award, UserPlus } from 'lucide-react';
+import GlassCard from '../../components/GlassCard';
+import Button from '../../components/Button';
+import floorWingService from '../../services/floorWing';
+import './FloorWingDashboard.css';
+
+function FloorWingDashboard() {
+    const [loading, setLoading] = useState(true);
+    const [dashboardData, setDashboardData] = useState(null);
+    const [students, setStudents] = useState([]);
+    const [mentors, setMentors] = useState([]);
+    const [activeView, setActiveView] = useState('dashboard');
+    const [selectedStudent, setSelectedStudent] = useState(null);
+    const [assignmentMode, setAssignmentMode] = useState(false);
+
+    useEffect(() => {
+        loadDashboard();
+        loadStudents();
+        loadMentors();
+    }, []);
+
+    const loadDashboard = async () => {
+        try {
+            const data = await floorWingService.getDashboard();
+            setDashboardData(data);
+        } catch (error) {
+            console.error('Failed to load dashboard:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const loadStudents = async () => {
+        try {
+            const data = await floorWingService.getStudents();
+            setStudents(data.students || []);
+        } catch (error) {
+            console.error('Failed to load students:', error);
+        }
+    };
+
+    const loadMentors = async () => {
+        try {
+            const data = await floorWingService.getMentors();
+            setMentors(data.mentors || []);
+        } catch (error) {
+            console.error('Failed to load mentors:', error);
+        }
+    };
+
+    const handleAssignStudent = async (studentId, mentorId) => {
+        try {
+            await floorWingService.assignStudent(studentId, mentorId);
+            await loadStudents();
+            await loadDashboard();
+            setAssignmentMode(false);
+            setSelectedStudent(null);
+        } catch (error) {
+            console.error('Failed to assign student:', error);
+            alert('Failed to assign student to mentor');
+        }
+    };
+
+    if (loading) {
+        return (
+            <div className="floorwing-dashboard">
+                <div style={{ textAlign: 'center', padding: '3rem' }}>Loading...</div>
+            </div>
+        );
+    }
+
+    const stats = dashboardData ? [
+        { label: 'Total Students', value: dashboardData.total_students, icon: Users, color: '#2196F3' },
+        { label: 'Total Mentors', value: dashboardData.total_mentors, icon: UserCheck, color: '#4CAF50' },
+        { label: 'Unassigned Students', value: dashboardData.unassigned_students, icon: Clock, color: '#FF9800' },
+        { label: 'Assigned Students', value: dashboardData.total_students - dashboardData.unassigned_students, icon: CheckCircle, color: '#9C27B0' },
+    ] : [];
+
+    return (
+        <div className="floorwing-dashboard">
+            <motion.div
+                className="floorwing-header"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <div>
+                    <h1 className="floorwing-title">
+                        {dashboardData?.campus_name} - Floor {dashboardData?.floor}
+                    </h1>
+                    <p className="floorwing-subtitle">
+                        {dashboardData?.floor_name} Wing Management Dashboard
+                    </p>
+                </div>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                    <Button
+                        variant={activeView === 'dashboard' ? 'primary' : 'secondary'}
+                        onClick={() => setActiveView('dashboard')}
+                    >
+                        Dashboard
+                    </Button>
+                    <Button
+                        variant={activeView === 'students' ? 'primary' : 'secondary'}
+                        onClick={() => setActiveView('students')}
+                    >
+                        Students
+                    </Button>
+                    <Button
+                        variant={activeView === 'mentors' ? 'primary' : 'secondary'}
+                        onClick={() => setActiveView('mentors')}
+                    >
+                        Mentors
+                    </Button>
+                </div>
+            </motion.div>
+
+            {activeView === 'dashboard' && (
+                <>
+                    <div className="floorwing-stats-grid">
+                        {stats.map((stat, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                                <GlassCard>
+                                    <div className="stat-card">
+                                        <div className="stat-icon" style={{ backgroundColor: `${stat.color}20` }}>
+                                            <stat.icon size={32} color={stat.color} />
+                                        </div>
+                                        <div className="stat-content">
+                                            <h3 className="stat-value">{stat.value}</h3>
+                                            <p className="stat-label">{stat.label}</p>
+                                        </div>
+                                    </div>
+                                </GlassCard>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <div className="mentor-workload-section">
+                        <h2 style={{ marginBottom: '1.5rem' }}>Mentor Workload</h2>
+                        <div style={{ display: 'grid', gap: '1rem' }}>
+                            {dashboardData?.mentor_stats?.map((mentor, index) => (
+                                <GlassCard key={index}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
+                                        <div>
+                                            <h3 style={{ margin: 0, fontSize: '1.1rem' }}>{mentor.name}</h3>
+                                            <p style={{ margin: '0.25rem 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                                {mentor.email}
+                                            </p>
+                                        </div>
+                                        <div style={{ textAlign: 'right' }}>
+                                            <div style={{ 
+                                                fontSize: '1.5rem', 
+                                                fontWeight: 'bold',
+                                                color: mentor.assigned_students > 15 ? '#FF9800' : '#4CAF50'
+                                            }}>
+                                                {mentor.assigned_students}
+                                            </div>
+                                            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                                                students
+                                            </div>
+                                        </div>
+                                    </div>
+                                </GlassCard>
+                            ))}
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {activeView === 'students' && (
+                <div className="students-section">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                        <h2>Students Management</h2>
+                        {assignmentMode && (
+                            <Button variant="secondary" onClick={() => {
+                                setAssignmentMode(false);
+                                setSelectedStudent(null);
+                            }}>
+                                Cancel Assignment
+                            </Button>
+                        )}
+                    </div>
+                    <div style={{ display: 'grid', gap: '1rem' }}>
+                        {students.map((student) => (
+                            <GlassCard key={student.id}>
+                                <div style={{ padding: '1rem' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <div>
+                                            <h3 style={{ margin: 0 }}>{student.name}</h3>
+                                            <p style={{ margin: '0.25rem 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                                {student.email}
+                                            </p>
+                                            <p style={{ margin: '0.5rem 0 0', fontSize: '0.9rem' }}>
+                                                {student.assigned_mentor_name ? (
+                                                    <span style={{ color: '#4CAF50' }}>
+                                                        ✓ Assigned to: {student.assigned_mentor_name}
+                                                    </span>
+                                                ) : (
+                                                    <span style={{ color: '#FF9800' }}>⚠ Not assigned</span>
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            {assignmentMode && selectedStudent?.id === student.id ? (
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                                    {mentors.map((mentor) => (
+                                                        <Button
+                                                            key={mentor.id}
+                                                            size="small"
+                                                            onClick={() => handleAssignStudent(student.id, mentor.id)}
+                                                        >
+                                                            {mentor.name}
+                                                        </Button>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <Button
+                                                    variant={student.assigned_mentor_name ? 'secondary' : 'primary'}
+                                                    size="small"
+                                                    onClick={() => {
+                                                        setSelectedStudent(student);
+                                                        setAssignmentMode(true);
+                                                    }}
+                                                >
+                                                    <UserPlus size={16} />
+                                                    {student.assigned_mentor_name ? 'Reassign' : 'Assign'}
+                                                </Button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </GlassCard>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {activeView === 'mentors' && (
+                <div className="mentors-section">
+                    <h2 style={{ marginBottom: '1.5rem' }}>Mentors in Your Floor</h2>
+                    <div style={{ display: 'grid', gap: '1rem' }}>
+                        {mentors.map((mentor) => (
+                            <GlassCard key={mentor.id}>
+                                <div style={{ padding: '1.5rem' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <div>
+                                            <h3 style={{ margin: 0, fontSize: '1.2rem' }}>{mentor.name}</h3>
+                                            <p style={{ margin: '0.25rem 0', color: 'var(--text-secondary)' }}>
+                                                {mentor.email}
+                                            </p>
+                                        </div>
+                                        <div style={{ textAlign: 'center' }}>
+                                            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2196F3' }}>
+                                                {mentor.assigned_students_count}
+                                            </div>
+                                            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                                                assigned students
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </GlassCard>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+export default FloorWingDashboard;

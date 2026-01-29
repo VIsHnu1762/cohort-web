@@ -1,0 +1,34 @@
+.theme-toggle {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border-radius: 9999px;
+  padding: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-icon {
+  color: #000000;
+}
+
+[data-theme='dark'] .theme-toggle-icon {
+  color: #ffcc00;
+}

@@ -1,0 +1,23 @@
+# Test Requirements
+# Selenium E2E Test Suite Dependencies
+
+# Core Testing Framework
+pytest==7.4.3
+pytest-html==4.1.1
+pytest-timeout==2.2.0
+pytest-xdist==3.5.0
+
+# Selenium WebDriver
+selenium==4.15.2
+webdriver-manager==4.0.1
+
+# HTTP Requests
+requests==2.31.0
+
+# Django (for test data seeding)
+django==4.2.7
+djangorestframework==3.14.0
+
+# Additional utilities
+python-dotenv==1.0.0
+Pillow==10.1.0

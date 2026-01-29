@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin CSS Test</title>
+    <link rel="stylesheet" href="src/pages/admin/campus/CampusSelection.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        .test-header {
+            background: rgba(247, 201, 72, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(247, 201, 72, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <h1>Admin CSS Test Page</h1>
+        <p>Testing if CSS classes from CampusSelection.css are working</p>
+    </div>
+
+    <!-- Test CampusSelection styles -->
+    <div class="campus-selection-container">
+        <h1 class="campus-selection-title">Select Campus</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Choose a campus to manage floors, mentors, and students</p>
+
+        <div class="campus-cards-grid">
+            <div class="campus-card" style="background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2rem;">
+                <div class="campus-icon" style="width: 120px; height: 120px; background: linear-gradient(135deg, #2196F3, #1976D2); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <span style="font-size: 3rem;">🏫</span>
+                </div>
+                <h2 style="font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem;">SNS College of Technology</h2>
+                <p style="color: var(--text-secondary); margin: 0 0 1.5rem;">Engineering and Technology Campus</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #F7C948, #E53935); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.25rem;">4</div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Floors</div>
+                    </div>
+                    <div>
+                        <div class="stat-value" style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #F7C948, #E53935); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.25rem;">150</div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Students</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-header" style="margin-top: 2rem;">
+        <h2>CSS Variable Test</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li>--text-primary: <span style="color: var(--text-primary);">■ This should be white</span></li>
+            <li>--text-secondary: <span style="color: var(--text-secondary);">■ This should be gray</span></li>
+            <li>--glass-bg: <span style="background: var(--glass-bg); padding: 5px 10px; border-radius: 4px;">Glass background</span></li>
+            <li>--glass-border: <span style="border: 2px solid var(--glass-border); padding: 5px 10px; border-radius: 4px;">Glass border</span></li>
+        </ul>
+    </div>
+
+    <script>
+        // Test if CSS variables are defined
+        const root = document.documentElement;
+        const style = getComputedStyle(root);
+        
+        console.log('=== CSS Variables Test ===');
+        console.log('--text-primary:', style.getPropertyValue('--text-primary'));
+        console.log('--text-secondary:', style.getPropertyValue('--text-secondary'));
+        console.log('--glass-bg:', style.getPropertyValue('--glass-bg'));
+        console.log('--glass-border:', style.getPropertyValue('--glass-border'));
+        
+        // Test if classes exist
+        console.log('\n=== CSS Classes Test ===');
+        const testDiv = document.querySelector('.campus-selection-container');
+        if (testDiv) {
+            const computed = getComputedStyle(testDiv);
+            console.log('.campus-selection-container exists');
+            console.log('max-width:', computed.maxWidth);
+            console.log('padding:', computed.padding);
+        } else {
+            console.error('.campus-selection-container NOT FOUND');
+        }
+        
+        const titleDiv = document.querySelector('.campus-selection-title');
+        if (titleDiv) {
+            const computed = getComputedStyle(titleDiv);
+            console.log('.campus-selection-title exists');
+            console.log('font-family:', computed.fontFamily);
+            console.log('font-size:', computed.fontSize);
+        } else {
+            console.error('.campus-selection-title NOT FOUND');
+        }
+    </script>
+</body>
+</html>

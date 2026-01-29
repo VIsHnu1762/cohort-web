@@ -1,0 +1,378 @@
+/* Main Container - Following student page pattern */
+.mentor-home-container {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Header with Profile */
+.mentor-home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home-welcome h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.home-welcome p {
+  opacity: 0.7;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.profile-icon-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffcc00, #ffcc00);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(247, 201, 72, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.profile-icon-btn:hover {
+  background: linear-gradient(135deg, #FFD700, #FF6B6B);
+  border-color: rgba(247, 201, 72, 0.8);
+  box-shadow: 0 4px 12px rgba(247, 201, 72, 0.5);
+  transform: scale(1.05);
+  color: #fff;
+}
+
+/* Ensure all buttons maintain visible text on hover */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  color: inherit !important;
+}
+
+button:hover span {
+  color: inherit !important;
+}
+
+/* Profile Modal */
+.profile-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.profile-modal-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffcc00, #ffcc00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: #000000;
+}
+
+.profile-modal-content h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.profile-detail-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Stats Grid - Horizontal Row */
+.mentor-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Dashboard Layout - 2 Column Grid like Student Page */
+.mentor-home-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+
+.mentor-home-left-column,
+.mentor-home-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mentor-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.mentor-stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.mentor-stat-card:hover .stat-icon {
+  transform: scale(1.1);
+}
+
+.stat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #ffcc00, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section Headers */
+.section-header {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  padding-bottom: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Activity List */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(8px);
+}
+
+.activity-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.activity-indicator.submission {
+  background: #2196F3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.6);
+}
+
+.activity-indicator.completed {
+  background: #4CAF50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
+}
+
+.activity-indicator.pending {
+  background: #FF9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.6);
+}
+
+.activity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-student {
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  font-size: 0.9375rem;
+}
+
+.activity-action {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.activity-time {
+  font-size: 0.8125rem;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* Deadlines List */
+.deadlines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.deadline-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(8px);
+}
+
+.deadline-priority {
+  width: 4px;
+  height: 40px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.deadline-priority.high {
+  background: #ffcc00;
+  box-shadow: 0 0 12px rgba(229, 57, 53, 0.6);
+}
+
+.deadline-priority.medium {
+  background: #FF9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.6);
+}
+
+.deadline-priority.low {
+  background: #4CAF50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
+}
+
+.deadline-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.deadline-title {
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  font-size: 0.9375rem;
+}
+
+.deadline-date {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .mentor-home-dashboard {
+    grid-template-columns: 1fr;
+  }
+  
+  .mentor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mentor-home-container {
+    padding: 1rem;
+  }
+  
+  .mentor-home-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .mentor-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mentor-home-dashboard {
+    gap: 1.5rem;
+  }
+}

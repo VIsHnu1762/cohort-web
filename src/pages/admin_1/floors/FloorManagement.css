@@ -1,0 +1,319 @@
+/* Floor Management Page */
+[data-theme="light"] .floor-management-page {
+    --profile-text: #111827;
+    --profile-text-secondary: #6B7280;
+    --profile-border: rgba(0, 0, 0, 0.08);
+    --profile-bg-hover: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .floor-management-page {
+    --profile-text: #F9FAFB;
+    --profile-text-secondary: #9CA3AF;
+    --profile-border: rgba(255, 255, 255, 0.1);
+    --profile-bg-hover: rgba(255, 255, 255, 0.05);
+}
+
+.floor-management-page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    color: var(--profile-text);
+    min-height: 100vh;
+    background: transparent;
+}
+
+.floor-form-card {
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.floor-form-card h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.25rem;
+    color: var(--profile-text);
+}
+
+.floor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-group label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--profile-text);
+}
+
+.mentor-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--profile-bg-hover);
+    border: 1px solid var(--profile-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label:hover {
+    border-color: #ffcc00;
+    background: rgba(247, 201, 72, 0.1);
+}
+
+.checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.color-picker {
+    width: 100px;
+    height: 50px;
+    border: 2px solid var(--profile-border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.floors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.floor-card {
+    position: relative;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.floor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #ffcc00, #ffcc00);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.floor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(247, 201, 72, 0.2);
+}
+
+.floor-card:hover::before {
+    opacity: 1;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--profile-border);
+    border-left: 4px solid;
+    padding-left: 1rem;
+}
+
+.floor-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--profile-text);
+}
+
+.floor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-button {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--profile-border);
+    background: transparent;
+    color: var(--profile-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.icon-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    padding: 1px;
+    background: linear-gradient(135deg, #ffcc00, #ffcc00);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.icon-button:hover {
+    background: var(--profile-bg-hover);
+    transform: scale(1.15) rotate(5deg);
+    border-color: transparent;
+}
+
+.icon-button:hover::before {
+    opacity: 1;
+}
+
+.icon-button.danger:hover {
+    background: rgba(229, 57, 53, 0.1);
+    border-color: transparent;
+    color: #ffcc00;
+}
+
+.icon-button.danger::before {
+    background: linear-gradient(135deg, #ffcc00, #C62828);
+}
+
+.floor-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--profile-bg-hover);
+    border-radius: 10px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--profile-text);
+}
+
+.stat-label {
+    font-size: 0.813rem;
+    margin: 0;
+    color: var(--profile-text-secondary);
+}
+
+.floor-mentors {
+    margin-bottom: 1.5rem;
+}
+
+.floor-mentors label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--profile-text);
+}
+
+.mentor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.mentor-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.floor-performance label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--profile-text);
+}
+
+.performance-bar {
+    height: 32px;
+    background: var(--profile-bg-hover);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.performance-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    transition: width 0.5s ease;
+}
+
+.performance-fill span {
+    font-size: 0.813rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.floor-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floor-management-page {
+        padding: 1.5rem;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .floors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .floor-stats {
+        grid-template-columns: 1fr;
+    }
+}

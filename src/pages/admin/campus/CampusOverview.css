@@ -1,0 +1,207 @@
+/* Campus Overview Page - Matching Mentor Dashboard Design */
+/* Uses ThemeContext CSS variables: --text-primary, --text-secondary, --glass-bg, --border-primary */
+
+.campus-overview-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.campus-overview-header {
+    position: relative;
+    margin-bottom: 3rem;
+    z-index: 1;
+}
+
+.campus-overview-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.campus-overview-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    margin: 0;
+    color: var(--text-secondary, #616161);
+    font-weight: 400;
+}
+
+.floors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.floor-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floor-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary, #000000);
+}
+
+.floor-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary, #616161);
+    margin: 0.25rem 0 0 0;
+}
+
+.floor-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+    border-bottom: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+}
+
+.floor-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary, #000000);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary, #616161);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.floor-wing-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.floor-wing-assigned {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.fw-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #616161);
+    font-weight: 500;
+}
+
+.fw-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.floor-wing-unassigned {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #616161);
+    opacity: 0.7;
+}
+
+.submission-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.submission-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.detail-item {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.detail-item.approved {
+    color: #4CAF50;
+}
+
+.detail-item.pending {
+    color: #FFA726;
+}
+
+.detail-item.rejected {
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .floors-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .campus-overview-title {
+        font-size: 2rem;
+    }
+    
+    .floor-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .submission-details {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+
+/* Theme overrides for dark mode */
+[data-theme='dark'] .campus-overview-container { color: var(--text-primary, #FFFFFF); }
+[data-theme='dark'] .campus-overview-container * { color: inherit; }
+[data-theme='dark'] .floor-detail { color: var(--text-primary, #FFFFFF); }
+[data-theme='dark'] .floor-detail * { color: inherit; }

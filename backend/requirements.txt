@@ -1,0 +1,48 @@
+# Django Framework
+Django==4.2.7
+djangorestframework==3.14.0
+
+# Python 3.13 compatibility
+setuptools>=65.0.0
+
+# Authentication (handled by another team member)
+djangorestframework-simplejwt==5.3.0
+
+# Database - PostgreSQL (Python 3.13 compatible)
+psycopg[binary]>=3.1.0
+dj-database-url==2.1.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# CORS Headers for frontend-backend communication
+django-cors-headers==4.3.1
+
+# Image Processing
+Pillow>=10.2.0
+
+# File Type Validation
+python-magic==0.4.27
+
+# Data Validation
+validators==0.22.0
+
+# HTTP Requests
+requests>=2.31.0
+
+# Web Scraping (if needed)
+beautifulsoup4>=4.12.0
+
+# Security
+cryptography==41.0.7
+argon2-cffi==23.1.0
+
+# Rate Limiting
+django-ratelimit==4.1.0
+
+# Production Server
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# API Documentation
+drf-yasg==1.21.7

@@ -1,0 +1,95 @@
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.progress-bar-track {
+  flex: 1;
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+[data-theme='light'] .progress-bar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .progress-bar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar-fill--gradient {
+  background: linear-gradient(90deg, #ffcc00 0%, #ffcc00 100%);
+}
+
+.progress-bar-fill--yellow {
+  background: #ffcc00;
+}
+
+.progress-bar-fill--red {
+  background: #ffcc00;
+}
+
+.progress-bar-fill--green {
+  background: #66BB6A;
+}
+
+.progress-bar-fill--blue {
+  background: #42A5F5;
+}
+
+.progress-bar-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6));
+  animation: progressGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-10px);
+  }
+}
+
+.progress-bar-percentage {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  min-width: 3rem;
+  text-align: right;
+  background: linear-gradient(135deg, #ffcc00 0%, #ffcc00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sizes */
+.progress-bar--small .progress-bar-track {
+  height: 0.5rem;
+}
+
+.progress-bar--medium .progress-bar-track {
+  height: 0.75rem;
+}
+
+.progress-bar--large .progress-bar-track {
+  height: 1rem;
+}
